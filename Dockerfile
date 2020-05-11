@@ -1,13 +1,11 @@
 FROM mhart/alpine-node:12.16.3
-# <"" | "all" | "lite">
-
-ARG EDITION="all"
-ENV EDITION $EDITION
-EXPOSE 3000
 
 ADD . /eth-netstats
 WORKDIR /eth-netstats
 
-RUN npm install && npm install -g grunt-cli && grunt
+RUN npm install 
+RUN npm install -g grunt-cli
+RUN grunt
 
+EXPOSE 3000
 CMD npm start
